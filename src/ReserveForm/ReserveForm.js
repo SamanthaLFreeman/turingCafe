@@ -1,4 +1,5 @@
 import React from 'react';
+import './ReserveForm.css';
 
 const ReserveForm = () => {
   return (
@@ -19,7 +20,7 @@ const ReserveForm = () => {
         placeholder='Number of guests'
         name='guests'
         value='' />
-      <button>Make Reservation</button>
+      <button className='reserve-btn'>Make Reservation</button>
     </form>
   )
 }
