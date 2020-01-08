@@ -8,7 +8,7 @@ article {
   width: 250px;
 }
 
-button {
+.cancel-btn {
   background-color: teal;
   border: none;
   color: #fff;
