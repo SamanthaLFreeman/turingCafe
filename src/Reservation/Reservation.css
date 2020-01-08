@@ -7,3 +7,13 @@ article {
   padding: 10px;
   width: 250px;
 }
+
+button {
+  background-color: teal;
+  border: none;
+  color: #fff;
+  font-size: 1em;
+  margin: 2px;
+  padding: 6px;
+  width: 85%;
+}
