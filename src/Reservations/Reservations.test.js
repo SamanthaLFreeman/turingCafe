@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Reservations from './Reservations';
 
-describe('App', () => {
+describe('Reservations', () => {
   let wrapper;
   const reservationsMock = [{
     name: 'Sam',

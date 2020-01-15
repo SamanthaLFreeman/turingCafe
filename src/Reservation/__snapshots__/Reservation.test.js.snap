@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App should match the snapshot with all of the data passed through 1`] = `
+exports[`Reservation should match the snapshot with all of the data passed through 1`] = `
 <article>
   <h2>
     Sam
