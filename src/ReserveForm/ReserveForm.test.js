@@ -22,4 +22,13 @@ describe('ReserveForm', () => {
 
     expect(wrapper.state('name')).toEqual(expected);
   });
+
+  it('should call handleSubmit when the button is clicked', () => {
+    wrapper.instance().handleSubmit = jest.fn();
+    const mockEvent = { preventDefault: jest.fn() };
+    wrapper.instance().forceUpdate();
+    wrapper.find('button').simulate('click', mockEvent);
+
+    expect(wrapper.instance().handleSubmit).toHaveBeenCalled();
+  });
 })
