@@ -4,10 +4,12 @@ import ReserveForm from './ReserveForm';
 
 describe('ReserveForm', () => {
   let wrapper;
+  const addReservationMock = jest.fn();
 
   beforeEach(() => {
     wrapper = shallow(
-      <ReserveForm />)
+      <ReserveForm 
+        addReservation={addReservationMock} />)
   })
 
   it('should match the snapshot with all of the data passed through', () => {
@@ -30,5 +32,11 @@ describe('ReserveForm', () => {
     wrapper.find('button').simulate('click', mockEvent);
 
     expect(wrapper.instance().handleSubmit).toHaveBeenCalled();
+  });
+
+  it('should call addReservation when handleSubmit is called', () => {
+    const mockEvent = { preventDefault: jest.fn() }
+    wrapper.instance().handleSubmit(mockEvent);
+    expect(addReservationMock).toHaveBeenCalled();
   });
 })
