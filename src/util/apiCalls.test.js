@@ -26,4 +26,8 @@ describe('getReservations', () => {
     expect(window.fetch).toHaveBeenCalledWith('http://localhost:3001/api/v1/reservations')
   });
 
+  it('should return the array of reservations', () => {
+    expect(getReservations()).resolves.toEqual(mockReservations);
+  });
+
 });
