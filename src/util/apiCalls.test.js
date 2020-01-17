@@ -30,4 +30,13 @@ describe('getReservations', () => {
     expect(getReservations()).resolves.toEqual(mockReservations);
   });
 
+  it('should return an error if the promise resolves but the property ok isn\'t true', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false
+      })
+    })
+
+    expect(getReservations()).rejects.toEqual(Error('Could not retrieve reservations.'))
+  });
 });
