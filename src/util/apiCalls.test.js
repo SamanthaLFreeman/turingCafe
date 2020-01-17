@@ -39,4 +39,12 @@ describe('getReservations', () => {
 
     expect(getReservations()).rejects.toEqual(Error('Could not retrieve reservations.'))
   });
+
+  it('should return an error if the promise rejects', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.reject(Error('fetch failed'))
+    })
+
+    expect(getReservations()).rejects.toEqual(Error('fetch failed'))
+  });
 });
