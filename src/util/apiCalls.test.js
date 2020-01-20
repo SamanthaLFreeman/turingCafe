@@ -80,4 +80,8 @@ describe('postReservation', () => {
 
     expect(window.fetch).toHaveBeenCalledWith('http://localhost:3001/api/v1/reservations', options)
   });
+
+  it('should return the new reservation', () => {
+    expect(postReservation(mockReservation)).resolves.toEqual(mockReservation);
+  });
 });
