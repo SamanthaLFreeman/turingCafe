@@ -1,4 +1,4 @@
-import { getReservations } from './apicalls';
+import { getReservations, postReservation } from './apicalls';
 
 describe('getReservations', () => {
   let mockReservations;
@@ -46,5 +46,38 @@ describe('getReservations', () => {
     })
 
     expect(getReservations()).rejects.toEqual(Error('fetch failed'))
+  });
+});
+
+describe('postReservation', () => {
+  let mockReservation = {
+    name: 'Sam',
+    date: '1/14',
+    time: '16:00',
+    number: 2,
+    id: 1
+  }
+
+  beforeEach(() => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(mockReservation)
+      })
+    })
+  });
+
+  it('should call fetch with the correct url', () => {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(mockReservation)
+    };
+
+    postReservation(mockReservation);
+
+    expect(window.fetch).toHaveBeenCalledWith('http://localhost:3001/api/v1/reservations', options)
   });
 });
