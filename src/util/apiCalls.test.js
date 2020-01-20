@@ -94,4 +94,12 @@ describe('postReservation', () => {
 
     expect(postReservation(mockReservation)).rejects.toEqual(Error('Could not post a new reservation.'))
   });
+
+  it('should return an error if the promise rejects', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.reject(Error('POST failed'))
+    })
+
+    expect(postReservation(mockReservation)).rejects.toEqual(Error('POST failed'))
+  });
 });
