@@ -20,7 +20,17 @@ exports[`App should match the snapshot with all of the data passed through 1`] =
     className="resy-container"
   >
     <Reservations
-      reservations={Array []}
+      reservations={
+        Array [
+          Object {
+            "date": "1/14",
+            "id": 1,
+            "name": "Sam",
+            "number": 2,
+            "time": "16:00",
+          },
+        ]
+      }
     />
   </div>
 </div>
