@@ -47,4 +47,8 @@ describe('App', () => {
     wrapper.instance().addReservation(reservationMock);
     expect(postReservation).toHaveBeenCalledWith(reservationMock);
   });
+
+  it('should call getReservations when mounting', () => {
+    expect(getReservations).toHaveBeenCalled();
+  });
 })
