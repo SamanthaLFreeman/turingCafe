@@ -1,7 +1,7 @@
 import React from 'react';
 import './Reservation.css';
 
-const Reservation = ({reservation}) => {
+const Reservation = ({ reservation, cancelReservation }) => {
   return (
     <article>
       <h2>{reservation.name}</h2>
