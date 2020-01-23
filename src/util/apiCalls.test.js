@@ -149,4 +149,12 @@ describe('deleteReservation', () => {
 
     expect(deleteReservation(mockId)).rejects.toEqual(Error('Could not delete a reservation.'))
   });
+
+  it('should return an error if the promise rejects', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.reject(Error('DELETE failed'))
+    })
+
+    expect(postReservation(mockReservations)).rejects.toEqual(Error('DELETE failed'))
+  });
 });
