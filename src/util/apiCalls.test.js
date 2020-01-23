@@ -112,6 +112,7 @@ describe('deleteReservation', () => {
     number: 2,
     id: 1
   }]
+  const mockId = 2
 
   beforeEach(() => {
     window.fetch = jest.fn().mockImplementation(() => {
@@ -129,11 +130,13 @@ describe('deleteReservation', () => {
         'Content-Type': 'application/json'
       }
     };
-    const mockId = 2
 
     deleteReservation(mockId);
 
     expect(window.fetch).toHaveBeenCalledWith(`http://localhost:3001/api/v1/reservations/${mockId}`, options)
   });
 
+  it('should return the existing reservations after one has been removed', () => {
+    expect(deleteReservation(mockId)).resolves.toEqual(mockReservations);
+  });
 });
