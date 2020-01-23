@@ -17,6 +17,7 @@ exports[`Reservation should match the snapshot with all of the data passed throu
   </p>
   <button
     className="cancel-btn"
+    onClick={[Function]}
   >
     Cancel
   </button>
