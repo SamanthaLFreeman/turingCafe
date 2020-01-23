@@ -1,4 +1,4 @@
-import { getReservations, postReservation } from './apicalls';
+import { getReservations, postReservation, deleteReservation } from './apicalls';
 
 describe('getReservations', () => {
   let mockReservations;
@@ -102,4 +102,38 @@ describe('postReservation', () => {
 
     expect(postReservation(mockReservation)).rejects.toEqual(Error('POST failed'))
   });
+});
+
+describe('deleteReservation', () => {
+  let mockReservations = [{
+    name: 'Sam',
+    date: '1/14',
+    time: '16:00',
+    number: 2,
+    id: 1
+  }]
+
+  beforeEach(() => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(mockReservations)
+      })
+    })
+  });
+
+  it('should call fetch with the correct url', () => {
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const mockId = 2
+
+    deleteReservation(mockId);
+
+    expect(window.fetch).toHaveBeenCalledWith(`http://localhost:3001/api/v1/reservations/${mockId}`, options)
+  });
+
 });
