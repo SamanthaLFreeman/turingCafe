@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
-import { getReservations, postReservation } from '../util/apicalls';
+import { getReservations, postReservation, deleteReservation } from '../util/apicalls';
 
 jest.mock('../util/apicalls');
 
@@ -24,6 +24,18 @@ postReservation.mockImplementation(() => {
     id: 1
   })
 });
+
+deleteReservation.mockImplementation( () => {
+  return Promise.resolve([
+    {
+      name: 'Sam',
+      date: '1/14',
+      time: '16:00',
+      number: 2,
+      id: 1
+    }
+  ])
+})
 
 describe('App', () => {
   let wrapper;
@@ -51,4 +63,5 @@ describe('App', () => {
   it('should call getReservations when mounting', () => {
     expect(getReservations).toHaveBeenCalled();
   });
+
 })
