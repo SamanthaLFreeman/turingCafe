@@ -64,4 +64,9 @@ describe('App', () => {
     expect(getReservations).toHaveBeenCalled();
   });
 
+  it('should call deleteReservation when cancelReservation is given an id to remove', async () => {
+    const reservationId = 2
+    wrapper.instance().cancelReservation(reservationId);
+    expect(deleteReservation).toHaveBeenCalledWith(reservationId);
+  });
 })
