@@ -39,6 +39,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
+        <button
+          className='sort-btn'>Sort by date</button>
         <div className='resy-form'>
           <ReserveForm addReservation={this.addReservation} />
         </div>

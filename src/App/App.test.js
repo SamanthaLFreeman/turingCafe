@@ -69,4 +69,6 @@ describe('App', () => {
     wrapper.instance().cancelReservation(reservationId);
     expect(deleteReservation).toHaveBeenCalledWith(reservationId);
   });
+
+  
 })
